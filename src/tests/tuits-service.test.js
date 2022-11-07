@@ -12,23 +12,23 @@ describe('can create tuit with REST API', () => {
 
   const ripleyTuit = {
     tuit: 'Testing creating tuit!',
-    postedBy: ripley.username
   }
 
   // setup test before running test
   beforeAll(() => {
-    return createUser(ripley.username);
+    return createUser(ripley);
   })
 
   // clean up after test runs
   afterAll(() => {
     // remove any data we created
+    deleteTuit(ripleyTuit._id)
     return deleteUsersByUsername(ripley.username);
   })
 
   test('can create tuit with REST API', async () => {
     // insert new tuit in the database
-    const newTuit = await createTuit(ripleyTuit);
+    const newTuit = await createTuit(ripley._id, ripleyTuit);
 
     // verify inserted tuit's properties match parameter tuit
     expect(newTuit.tuit).toEqual(ripleyTuit.tuit);
