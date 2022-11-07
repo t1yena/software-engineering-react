@@ -1,10 +1,10 @@
-import {Tuits} from "../components/tuits";
+import {Tuits} from "../components/tuits/index"
 import {screen, render} from "@testing-library/react";
 import {HashRouter} from "react-router-dom";
 import {findAllTuits} from "../services/tuits-service";
 import axios from "axios";
 
-jest.mock('axios');
+// jest.mock('axios');
 
 const MOCKED_USERS = [
   "alice", "bob", "charlie"
@@ -19,9 +19,11 @@ test('tuit list renders static tuit array', () => {
 });
 
 test('tuit list renders async', async () => {
-  // TODO: implement this
+  const tuits = await findAllTuits();
+    render(
+      <HashRouter>
+        <Tuits tuits={tuits}/>
+      </HashRouter>);
+    const linkElement = screen.getByText(/webdev/i);
+    expect(linkElement).toBeInTheDocument();
 })
-
-test('tuit list renders mocked', async () => {
-  // TODO: implement this
-});

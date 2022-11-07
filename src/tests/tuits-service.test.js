@@ -74,12 +74,48 @@ describe('can delete tuit wtih REST API', () => {
 });
 
 describe('can retrieve a tuit by their primary key with REST API', () => {
-  // TODO: implement this
+  const bird = {
+    username: 'hummingbird',
+    password: 'hummmmmm',
+    email: 'hbird@birds.com'
+  };
+
+  const testTuit = {
+    tuit: 'Testing find tuit by id!',
+  };
+
+  let newTuit;
+  // setup before running test
+  beforeAll(async() => {
+    const newUser = await createUser(bird)
+    // insert new tuit in the database
+    newTuit = await createTuit(newUser._id,testTuit)
+    return newTuit
+  });
+
+  // clean up after ourselves
+  afterAll(() => {
+    // remove any data we inserted
+    deleteUsersByUsername(testTuit.username)
+    return deleteTuit(newTuit._id)
+  });
+
+  test('can retrieve tuits from REST API with primary key', async () => {
+    
+    // verify new tuit to match parameter tuit
+    expect(newTuit.tuit).toEqual(testTuit.tuit);
+
+    // retrieve tuit by primary key
+    const existingTuit = await findTuitById(newTuit._id);
+    expect(existingTuit.tuit).toEqual(testTuit.tuit);
+
+});
+
 
 });
 
 describe('can retrieve all tuits with REST API', () => {
-  // sample users we'll insert to then retrieve
+  // sample tuits we'll insert to then retrieve
   const ripley = {
     username: 'ellenripley',
     password: 'lv426',
@@ -100,31 +136,19 @@ describe('can retrieve all tuits with REST API', () => {
   }
   );
 
-  // clean up after ourselves
-  // afterAll(() =>
-  //   // delete the users we inserted
-  //   // usernames.map(username =>
-  //   //   deleteUsersByUsername(username)
-  //   )
-  // );
+  //clean up after ourselves
+  afterAll(() =>
+    // delete the users we inserted
+    tuitTests.map(t =>
+      deleteTuit(t._id)
+    )
+  );
 
   test('can retrieve all tuits from REST API', async () => {
-    // retrieve all the users
+    // retrieve all the tuits
     const tuits = await findAllTuits();
 
-    // there should be a minimum number of users
+    // there should be a minimum number of tuits
     expect(tuits.length).toBeGreaterThanOrEqual(tuitTests.length);
-
-    // let's check each user we inserted
-    // const tuitsWeInserted = tuits.filter(
-    //   user => usernames.indexOf(user.username) >= 0);
-
-    // compare the actual users in database with the ones we sent
-    // usersWeInserted.forEach(user => {
-    //   const username = usernames.find(username => username === user.username);
-    //   expect(user.username).toEqual(username);
-    //   expect(user.password).toEqual(`${username}123`);
-    //   expect(user.email).toEqual(`${username}@stooges.com`);
-    // });
   });
 });
