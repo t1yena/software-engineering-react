@@ -7,7 +7,8 @@ import Signup from "./signup";
 
 export const Login = () => {
   const [loginUser, setLoginUser] = useState({});
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+
   const login = () =>
     service.login(loginUser)
       .then((user) => navigate('/profile/mytuits'))
