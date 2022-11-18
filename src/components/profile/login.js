@@ -3,6 +3,7 @@ import {useEffect, useState} from "react";
 import * as service from "../../services/auth-service";
 import React from "react";
 import {UserList} from "./user-list";
+import Signup from "./signup";
 
 export const Login = () => {
   const [loginUser, setLoginUser] = useState({});
@@ -11,13 +12,20 @@ export const Login = () => {
     service.login(loginUser)
       .then((user) => navigate('/profile/mytuits'))
       .catch(e => alert(e));
+
   return (
     <div>
+      <Signup/>
+
       <h1>Login</h1>
-      <input onChange={(e) =>
+      <input 
+        placeholder="username"
+        onChange={(e) =>
         setLoginUser({...loginUser,
           username: e.target.value})}/>
-      <input onChange={(e) =>
+      <input
+        placeholder="password" 
+        onChange={(e) =>
         setLoginUser({...loginUser,
           password: e.target.value})}/>
       <button onClick={login}>
