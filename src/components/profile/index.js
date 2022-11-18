@@ -1,5 +1,7 @@
 import React from "react";
-import * as service from "./auth-service"
+import {Link, useNavigate} from "react-router-dom";
+import {useEffect, useState} from "react";
+import * as service from "../../services/auth-service"
 
 // import Tuits from "../tuits";
 // import {Link} from "react-router-dom";
