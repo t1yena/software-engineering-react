@@ -1,7 +1,8 @@
 import axios from "axios";
-const BASE_URL = "http://a2-env.eba-vyhiu8vb.us-east-1.elasticbeanstalk.com";
+// const BASE_URL = "http://a2-env.eba-vyhiu8vb.us-east-1.elasticbeanstalk.com";
 // const BASE_URL = "https://software-engineering-node-fa22.herokuapp.com/api";
 // const BASE_URL = "http://localhost:4000";
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 const LOGIN_API = `${BASE_URL}/api/login`;
 const USERS_API = `${BASE_URL}/api/users`;
