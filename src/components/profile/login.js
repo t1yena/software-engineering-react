@@ -1,8 +1,7 @@
-import {Link, useNavigate} from "react-router-dom";
-import {useEffect, useState} from "react";
+import {useNavigate} from "react-router-dom";
+import {useState} from "react";
 import * as service from "../../services/auth-service";
 import React from "react";
-import {UserList} from "./user-list";
 import Signup from "./signup";
 
 export const Login = () => {
@@ -13,6 +12,7 @@ export const Login = () => {
     service.login(loginUser)
       .then((user) => navigate('/profile/mytuits'))
       .catch(e => alert(e));
+
 
   return (
     <div>

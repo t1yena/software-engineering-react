@@ -13,11 +13,11 @@ const EditProfile = () => {
               </Link>
               <h4 className="p-2 mb-0 pb-0 fw-bolder">Edit profile</h4>
               <div className="mb-5 position-relative">
-                  <img className="w-100" src="../images/nasa-profile-header.jpg"/>
+                  <img className="w-100" src="../images/nasa-profile-header.jpg" alt="profile"/>
                   <div className="bottom-0 left-0 position-absolute">
                       <div className="position-relative">
                           <img className="position-relative ttr-z-index-1 ttr-top-40px ttr-width-150px"
-                               src="../images/nasa-3.png"/>
+                               src="../images/nasa-3.png" alt="profile"/>
                       </div>
                   </div>
               </div>
@@ -27,7 +27,7 @@ const EditProfile = () => {
               <label htmlFor="username">Username</label>
               <input id="username" title="Username"
                      className="p-0 form-control border-0"
-                     placeholder="alan" value="alan"/>
+                     placeholder="alan"/>
             </div>
             <div className="border border-secondary rounded-3 p-2 mb-3">
               <label htmlFor="first-name">First name</label>

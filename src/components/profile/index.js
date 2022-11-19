@@ -1,21 +1,26 @@
 import React from "react";
 import {Link, useNavigate} from "react-router-dom";
+import {Routes, Route} from "react-router";
 import {useEffect, useState} from "react";
 import * as service from "../../services/auth-service"
-
+import MyTuits from "./my-tuits";
 import Tuits from "../tuits";
-// import {Link} from "react-router-dom";
+// import Tuit from "../tuits/tuit";
 
 const Profile = () => {
   const navigate = useNavigate();
   const [profile, setProfile] = useState({});
-  useEffect(async () => {
-    try {
-      const user = await service.profile();
-      setProfile(user);
-    } catch (e) {
-      navigate('/login');
-    }
+  
+  useEffect(() => {
+    (async function() {
+      try {
+        const user = await service.profile();
+        setProfile(user);
+      } catch (e) {
+        navigate('/login');
+      }
+    })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const logout = () => {
     service.logout()
@@ -36,11 +41,11 @@ const Profile = () => {
         <h4 className="p-2 mb-0 pb-0 fw-bolder">NASA<i className="fa fa-badge-check text-primary"></i></h4>
         <span className="ps-2">67.6K Tuits</span>
         <div className="mb-5 position-relative">
-          <img className="w-100" src="../images/nasa-profile-header.jpg"/>
+          <img className="w-100" src="../images/nasa-profile-header.jpg" alt="profile"/>
           <div className="bottom-0 left-0 position-absolute">
             <div className="position-relative">
               <img className="position-relative ttr-z-index-1 ttr-top-40px ttr-width-150px"
-                   src="../images/nasa-3.png"/>
+                   src="../images/nasa-3.png" alt="profile"/>
             </div>
           </div>
           <Link to="/profile/edit"
@@ -51,7 +56,7 @@ const Profile = () => {
 
         <div className="p-2">
           <h4 className="fw-bolder pb-0 mb-0">
-            NASA<i className="fa fa-badge-check text-primary"></i>
+          {profile.name}<i className="fa fa-badge-check text-primary"></i>
           </h4>
           <h6 className="pt-0">@{profile.username}</h6>
           <p className="pt-2">
@@ -93,9 +98,26 @@ const Profile = () => {
             </li>
           </ul>
         </div>
+        <div className="m-2">
+         <button 
+            className="btn btn-primary"
+            onClick={logout}>
+           Logout</button>
+        </div>
       </div>
+      <Routes>
+        <Route path="/mytuits"
+               element={<MyTuits/>}/>
+        {/* <Route path="/tuits-and-replies"
+               element={<TuitsAndReplies/>}/> */}
+        {/* <Route path="/media"
+               element={<Media/>}/> */}
+        {/* <Route path="/mylikes"
+               element={<MyLikes/>}/> */}
+      </Routes>
       <Tuits/>
     </div>
+    
   );
 }
 export default Profile;
