@@ -15,21 +15,26 @@ const Signup = () => {
     <div>
       <h1>Signup</h1>
       <input 
+        className="m-1"
         placeholder="username"
         onChange={(e) =>
         setNewUser({...newUser,
-          username: e.target.value})}/>
+          username: e.target.value})}/><br/>
       <input 
+        className="m-1"
         placeholder="password"
         onChange={(e) =>
         setNewUser({...newUser,
-          password: e.target.value})}/>
+          password: e.target.value})}/><br/>
       <input 
+        className="m-1"
         placeholder="email"
         onChange={(e) =>
         setNewUser({...newUser,
-          email: e.target.value})}/>
-      <button onClick={signup}>
+          email: e.target.value})}/><br/>
+      <button 
+        className="m-1 btn btn-sm btn-primary"
+        onClick={signup}>
         Signup</button>
     </div>
   );

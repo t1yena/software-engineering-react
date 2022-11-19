@@ -20,16 +20,20 @@ export const Login = () => {
 
       <h1>Login</h1>
       <input 
+        className="m-1"
         placeholder="username"
         onChange={(e) =>
         setLoginUser({...loginUser,
-          username: e.target.value})}/>
+          username: e.target.value})}/><br/>
       <input
+        className="m-1"
         placeholder="password" 
         onChange={(e) =>
         setLoginUser({...loginUser,
-          password: e.target.value})}/>
-      <button onClick={login}>
+          password: e.target.value})}/><br/>
+      <button 
+        className="m-1 btn btn-sm btn-primary"
+        onClick={login}>
         Login</button>
     </div>
   );
