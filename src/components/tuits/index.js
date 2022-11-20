@@ -5,15 +5,15 @@ import * as likesService from "../../services/likes-service";
 
 const Tuits = ({tuits = [], deleteTuit,refreshTuits}) => {
 
-  const likeTuit = (tuit) =>
-    likesService.userTogglesTuitLikes("me", tuit._id)
-      .then(refreshTuits)
-      .catch(e => alert(e))
+const likeTuit = (tuit) =>
+  likesService.userTogglesTuitLikes("me", tuit._id)
+    .then(refreshTuits)
+    .catch(e => alert(e))
 
-  const dislikeTuit = (tuit) =>
-    likesService.userTogglesTuitDislikes("me", tuit._id)
-      .then(refreshTuits)
-      .catch(e => alert(e))
+const dislikeTuit = (tuit) =>
+  likesService.userTogglesTuitDislikes("me", tuit._id)
+    .then(refreshTuits)
+    .catch(e => alert(e))
 
   return (
     <div>
