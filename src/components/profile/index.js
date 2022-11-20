@@ -101,7 +101,7 @@ const Profile = () => {
           <ul className="mt-4 nav nav-pills nav-fill">
             <li className="nav-item">
               <Link to="/profile/mytuits"
-                    className="nav-link active">
+                    className="nav-link">
                 My Tuits</Link>
             </li>
             <li className="nav-item">
