@@ -5,14 +5,14 @@ const TuitStats = ({tuit, likeTuit}) => {
     <div className="row mt-2">
       <div className="col">
            <i className="far fa-message me-1"></i>
-           {this.props.tuit.stats && this.props.tuit.stats.replies}
+           {tuit.stats && tuit.stats.replies}
       </div>
       <div className="col">
         <i className="far fa-retweet me-1"></i>
-        {this.props.tuit.stats && this.props.tuit.stats.retuits}
+        {tuit.stats && tuit.stats.retuits}
       </div>
       <div className="col">
-        <span onClick={() => likeTuit(tuit)}>
+        <span onClick={() => likeTuit(tuit)} id="likes">
         {
           tuit.stats.likes > 0 &&
           <i className="fas fa-heart"
@@ -22,7 +22,9 @@ const TuitStats = ({tuit, likeTuit}) => {
           tuit.stats.likes <= 0 &&
           <i className="far fa-heart"></i>
         }
-        {tuit.stats && tuit.stats.likes}
+        <span>
+          {tuit.stats && tuit.stats.likes}
+        </span>
         </span>
       </div>
       <div className="col">

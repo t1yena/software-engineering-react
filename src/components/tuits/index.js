@@ -1,7 +1,7 @@
 import React from "react";
 import './tuits.css';
 import Tuit from "./tuit";
-import * as likesService from "../../service/likes-service";
+import * as likesService from "../../services/likes-service";
 
 const Tuits = ({tuits = [], deleteTuit,refreshTuits}) => {
 
@@ -12,7 +12,7 @@ const Tuits = ({tuits = [], deleteTuit,refreshTuits}) => {
 
   return (
     <div>
-      <ul>
+      <ul className="ttr-tuits list-group">
         {
           tuits.map(tuit =>
             <Tuit key={tuit._id}
