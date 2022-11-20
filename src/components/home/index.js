@@ -3,11 +3,10 @@ import Tuits from "../tuits";
 import * as service from "../../services/tuits-service";
 import * as authService from "../../services/auth-service"
 import {useEffect, useState} from "react";
-import {useLocation, useParams} from "react-router-dom";
-import { findUserByCredentials } from "../../services/users-service";
+// import {useLocation, useParams} from "react-router-dom";
+// import { findUserByCredentials } from "../../services/users-service";
 
 const Home = () => {
-  const location = useLocation();
   const [tuits, setTuits] = useState([]);
   const [tuit, setTuit] = useState('');
   const [user, setUser] = useState({}); 
@@ -35,11 +34,14 @@ const Home = () => {
     //     .then(tuits => setTuits(tuits))
     // }
   }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(async () => {
+    // eslint-disable-next-line
     let isMounted = true;
     await findUser();
     await findTuits();
     return () => {isMounted = false;}
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const createTuit = () =>
@@ -59,7 +61,7 @@ const Home = () => {
           <div className="d-flex">
             <div className="p-2">
               <img className="ttr-width-50px rounded-circle"
-                   src={`../../images/${user.profilePhoto}`}/>
+                   src={`../../images/${user.profilePhoto}`} alt='profile'/>
             </div>
             <div className="p-2 w-100">
               <textarea
@@ -77,6 +79,7 @@ const Home = () => {
                   <i className="far fa-map-location me-3"></i>
                 </div>
                 <div className="col-2">
+                  {/* eslint-disable-next-line */}
                   <a onClick={createTuit}
                      className={`btn btn-primary rounded-pill fa-pull-right
                                   fw-bold ps-4 pe-4`}>
@@ -88,7 +91,7 @@ const Home = () => {
           </div>
         }
       </div>
-      <Tuits tuits={tuits} deleteTuit={deleteTuit}/>
+      <Tuits tuits={tuits} deleteTuit={deleteTuit} refreshTuits={findTuits}/>
     </div>
   );
 };
