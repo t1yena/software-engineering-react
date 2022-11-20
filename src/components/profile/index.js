@@ -37,7 +37,7 @@ const Profile = () => {
 
   return(
     <div className="ttr-profile">
-      <div className="border border-bottom-0">
+      {/* <div className="border border-bottom-0">
         <h4 className="p-2 mb-0 pb-0 fw-bolder">NASA<i className="fa fa-badge-check text-primary"></i></h4>
         <span className="ps-2">67.6K Tuits</span>
         <div className="mb-5 position-relative">
@@ -77,7 +77,7 @@ const Profile = () => {
           <b className="ms-4">51.1M</b> Followers
           <ul className="mt-4 nav nav-pills nav-fill">
             <li className="nav-item">
-              <Link to="/profile/tuits"
+              <Link to="/profile/mytuits"
                     className="nav-link active">
                 Tuits</Link>
             </li>
@@ -98,13 +98,37 @@ const Profile = () => {
             </li>
           </ul>
         </div>
-        <div className="m-2">
+        <div className="m-2"> */}
+        <h4>{profile.username}</h4>
+        <h6>@{profile.username}</h6>
          <button 
-            className="btn btn-primary"
-            onClick={logout}>
-           Logout</button>
-        </div>
-      </div>
+          className="btn btn-primary"
+          onClick={logout}>
+          Logout</button>
+          <ul className="mt-4 nav nav-pills nav-fill">
+            <li className="nav-item">
+              <Link to="/profile/mytuits"
+                    className="nav-link active">
+                My Tuits</Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/profile/tuits-and-replies"
+                    className="nav-link">
+                Tuits & replies</Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/profile/media"
+                    className="nav-link">
+                Media</Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/profile/likes"
+                    className="nav-link">
+                Likes</Link>
+            </li>
+          </ul>
+        {/* </div>
+      </div> */}
       <Routes>
         <Route path="/mytuits"
                element={<MyTuits/>}/>

@@ -25,13 +25,15 @@ const Home = () => {
   }
 
   const findTuits = () => {
-    if(userId) {
-      return service.findTuitByUser(userId)
+    return service.findAllTuits()
         .then(tuits => setTuits(tuits))
-    } else {
-      return service.findAllTuits()
-        .then(tuits => setTuits(tuits))
-    }
+    // if(userId) {
+    //   return service.findTuitByUser(userId)
+    //     .then(tuits => setTuits(tuits))
+    // } else {
+    //   return service.findAllTuits()
+    //     .then(tuits => setTuits(tuits))
+    // }
   }
   useEffect(async () => {
     let isMounted = true;
@@ -53,7 +55,7 @@ const Home = () => {
       <div className="border border-bottom-0">
         <h4 className="fw-bold p-2">Home Screen</h4>
         {
-          // userId &&
+          userId &&
           <div className="d-flex">
             <div className="p-2">
               <img className="ttr-width-50px rounded-circle"
