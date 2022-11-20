@@ -15,7 +15,7 @@ const Movies = () => {
       <input
         onChange={(e) => setTitle(e.target.value)}
         value={title}
-        className="form-control"/>
+        className="mb-1 form-control"/>
       <button onClick={searchForMovie} className="btn btn-primary">Search</button>
       <ul className="list-group">
         {
