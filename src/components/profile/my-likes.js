@@ -2,6 +2,10 @@ import Tuits from "../tuits";
 import * as service from "../../services/likes-service";
 import {useEffect, useState} from "react";
 
+/**
+ * Likes component to be rendered in profile
+ * @returns 
+ */
 const MyLikes = () => {
   const [likedTuits, setLikedTuis] = useState([]);
   const findTuitsILike = () =>
