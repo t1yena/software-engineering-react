@@ -5,7 +5,7 @@ import {useEffect, useState} from "react";
 import * as service from "../../services/auth-service"
 import MyTuits from "./my-tuits";
 import Tuits from "../tuits";
-// import Tuit from "../tuits/tuit";
+import MyLikes from "./my-likes";
 
 const Profile = () => {
   const navigate = useNavigate();
@@ -26,14 +26,6 @@ const Profile = () => {
     service.logout()
       .then(() => navigate('/login'));
   }
-  // return(
-  //   <div>
-  //     <h4>{profile.username}</h4>
-  //     <h6>@{profile.username}</h6>
-  //     <button onClick={logout}>
-  //       Logout</button>
-  //   </div>
-  // );
 
   return(
     <div className="ttr-profile">
@@ -122,7 +114,7 @@ const Profile = () => {
                 Media</Link>
             </li>
             <li className="nav-item">
-              <Link to="/profile/likes"
+              <Link to="/profile/mylikes"
                     className="nav-link">
                 Likes</Link>
             </li>
@@ -136,8 +128,8 @@ const Profile = () => {
                element={<TuitsAndReplies/>}/> */}
         {/* <Route path="/media"
                element={<Media/>}/> */}
-        {/* <Route path="/mylikes"
-               element={<MyLikes/>}/> */}
+        <Route path="/mylikes"
+               element={<MyLikes/>}/>
       </Routes>
       <Tuits/>
     </div>
