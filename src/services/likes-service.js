@@ -1,7 +1,7 @@
 import axios from "axios";
 // const BASE_URL = "http://a2-env.eba-vyhiu8vb.us-east-1.elasticbeanstalk.com";
-
-const BASE_URL = process.env.REACT_APP_BASE_URL;
+const BASE_URL = "http://localhost:4000";
+// const BASE_URL = process.env.REACT_APP_BASE_URL;
 const USERS_API = `${BASE_URL}/api/users`;
 
 const api = axios.create({
@@ -11,10 +11,12 @@ const api = axios.create({
 export const userTogglesTuitLikes = (uid, tid) =>
    api.put(`${USERS_API}/${uid}/likes/${tid}`)
        .then(response => response.data);
+    
 
 export const userTogglesTuitDislikes = (uid, tid) =>
     api.put(`${USERS_API}/${uid}/dislikes/${tid}`)
     .then(response => response.data);
+    console.log("dilike");
 
 export const findAllTuitsLikedByUser = (userId) =>
     api.get(`${USERS_API}/${userId}/likes`)
